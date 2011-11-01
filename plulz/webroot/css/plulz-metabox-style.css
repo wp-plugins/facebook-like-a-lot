@@ -1,0 +1,24 @@
+/**
+ *
+ * All the css regarding customization for custom metaboxes in any type of post of content
+ *
+ *
+ */
+
+.inside small, .inside label, .inside input.text{
+    padding: 3px 0;
+    display:block;
+}
+
+.inside label{
+    margin-top:10px;
+}
+
+.inside input.text{
+    width: 90%;
+}
+
+/*
+ * orcamento_cliente_metabox
+ *
+ */
