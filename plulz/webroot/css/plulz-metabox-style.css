@@ -1,0 +1,208 @@
+/**
+ *
+ * All the css regarding customization for custom metaboxes in any type of post of content
+ *
+ *
+ */
+
+/* Floating fix */
+.postbox{
+    clear: both;
+}
+
+#orcamento_cliente_metabox, #produto_metabox{
+    float: left;
+    width: 100%;
+}
+
+/* End fix */
+#orcamento_cliente_metabox .inside h2,
+#orcamento_produtos_metabox .inside h2,
+#produto_metabox .inside h2{
+    float:left;
+    clear: both;
+    width: 100%;
+}
+
+#orcamento_cliente_metabox .inside p,
+#orcamento_produtos_metabox .inside p,
+#produto_metabox .inside p{
+    width: 33%;
+    float:left;
+}
+#orcamento_cliente_metabox .inside small,
+#orcamento_produtos_metabox .inside small,
+#produto_metabox .inside small,
+#orcamento_cliente_metabox .inside label,
+#orcamento_produtos_metabox .inside label,
+#produto_metabox .inside label,
+#orcamento_cliente_metabox .inside input.text,
+#orcamento_produtos_metabox .inside input.text,
+#produto_metabox .inside input.text,
+#orcamento_cliente_metabox .inside select,
+#orcamento_produtos_metabox .inside select,
+#produto_metabox .inside select{
+    padding: 3px 0;
+    width: 90%;
+    display:block;
+}
+
+/*
+ * produto_extra_metabox
+ *
+ */
+
+#produto_extra_metabox{
+
+}
+    #produto_extra_metabox p{
+        width: 48%;
+        padding: 0 1%;
+        float: left;
+    }
+
+        #produto_extra_metabox p input{
+            width: 100%;
+        }
+
+.extra_fields_button{
+    display: block;
+    float:none !important;
+    clear:both !important;
+}
+/*
+ * orcamento_cliente_metabox
+ *
+ */
+
+
+#orcamento_produtos_metabox thead th{
+    padding-top: 10px;
+    padding-bottom: 4px;
+}
+#orcamento_produtos_metabox tbody td{
+    padding-bottom: 4px;
+}
+#orcamento_produtos_metabox tfoot td{
+    padding-top: 20px;
+    border-top: 1px solid #eaeaea;
+}
+
+
+#orcamento_produtos_metabox .inside th.id,
+#orcamento_produtos_metabox .inside select.codigo{
+    width:81px;
+}
+
+#orcamento_produtos_metabox .inside th.quantidade,
+#orcamento_produtos_metabox .inside input.quantidade{
+    width:47px;
+}
+
+#orcamento_produtos_metabox .inside th.descricao,
+#orcamento_produtos_metabox .inside input.descricao{
+    width:100px;
+}
+
+#orcamento_produtos_metabox .inside th.gravacoes,
+#orcamento_produtos_metabox .inside select.gravacoes{
+    width: 75px;
+}
+
+#orcamento_produtos_metabox .inside th.custo_unitario,
+#orcamento_produtos_metabox .inside input.custo_unitario,
+#orcamento_produtos_metabox .inside th.venda_unitario,
+#orcamento_produtos_metabox .inside input.venda_unitario{
+    width:63px;
+}
+
+#orcamento_produtos_metabox .inside th.desconto,
+#orcamento_produtos_metabox .inside td.desconto,
+#orcamento_produtos_metabox .inside input.desconto{
+    width:40px !important
+}
+
+#orcamento_produtos_metabox .inside th.total,
+#orcamento_produtos_metabox .inside input.total{
+    width:85px;
+}
+
+#orcamento_produtos_metabox .inside th.prazo,
+#orcamento_produtos_metabox .inside input.prazo{
+    width:75px;
+}
+#orcamento_produtos_metabox .inside th.extras,
+#orcamento_produtos_metabox .inside td.extras{
+    width: 20px;
+    position: relative;
+    text-align: center
+}
+
+    #orcamento_produtos_metabox div.inside td.extras  .checklist_extra{
+        display: none;
+    }
+        #orcamento_produtos_metabox div.inside td.extras .checklist_extra p{
+            height: 20px;
+            font-size: 14px;
+            background: none;
+            line-height: 20px;
+            width: 100%;
+            float: none;
+        }
+
+        #orcamento_produtos_metabox div.inside td.extras  .checklist_extra input{
+            float: left;
+            margin-top: 7px;
+            display: block;
+            width: 5%;
+        }
+
+        #orcamento_produtos_metabox div.inside td.extras  .checklist_extra label{
+            float: right;
+            text-align: left;
+            margin-top: 0;
+            width: 95%;
+        }
+
+    .add_extra{
+        float: none;
+    }
+
+/* Gracioso */
+
+#orcamento_produtos_metabox input.venda_unitario{
+    color: green;
+}
+
+#orcamento_produtos_metabox input.custo_unitario{
+    color: red;
+}
+
+/** Comentarios Orcamentos **/
+
+#orcamento_comentarios_metabox .inside p{
+    width: 100%;
+}
+
+    #orcamento_comentarios_metabox .inside p textarea{
+        width: 100%;
+    }
+
+
+ul#comentarios{
+
+}
+
+    ul#comentarios li{
+        padding: 10px;
+        background: #EFEFEF;
+        font-size: 12px;
+    }
+
+    ul#comentarios li p.meta{
+        font-size:11px;
+        font-style: italic;
+        text-align:left;
+        float: none;
+    }
+
