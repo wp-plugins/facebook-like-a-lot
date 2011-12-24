@@ -1,75 +1,116 @@
 <?php
 /*
- * This class is responsible for handling all application controlling
- * sending the correct requests to the correct place on the models
- *
+ * This class is responsible for handling all application instances
+ * sending the correct requests to the correct place / models
  *
  * CLASS OVERVIEW
  *
  *
+ * Class also sets a important configuration that, a maximum number of revisions for posts in wordpress
+ *
  */
+
 if (!class_exists('PlulzControllerAbstract'))
 {
-    /**
-     * Avoid db bloating with milions of revisions
-     */
-    if (!defined('WP_POST_REVISIONS')) define('WP_POST_REVISIONS', 5);
-
     abstract class PlulzControllerAbstract extends PlulzObjectAbstract
     {
-        protected $_ajaxEvents;
+        protected $_serverDir;
+
+        protected $_templateDir;
+
+        protected $_appControllerDir;
+
+        protected $_libControllerDir;
+
+        protected $_serverAssets;
+
+        protected $_assets;
+
+        protected $_nonce;
 
         protected $_blogurl;
 
         protected $_homeUrl;
 
-        abstract function handleAjax( $action );
+        protected $_adminAjaxUrl;
 
-        abstract function handlePost( $data );
-        
+        protected $_adminOptionsUrl;
+
+        public $PlulzForm;
+
+        /**
+          * Holds all registered ajax events
+          * @var array
+          */
+        protected $_ajaxEvents;
+
+
         public function __construct()
         {
-            $this->_blogurl  = get_bloginfo('home');
+            global $plulz_server_directory, $plulz_template_directory;
 
-            $this->_homeUrl  = get_bloginfo('url');
+            $this->_serverDir = $plulz_server_directory;
+
+            $this->_templateDir = $plulz_template_directory;
+
+            $this->_appControllerDir = $this->_serverDir . '/plulz/app/Controller/';
+
+            $this->_libControllerDir = $this->_serverDir . '/plulz/lib/Controller/';
+
+            $this->_serverAssets = $this->_serverDir . '/plulz/webroot/';
+
+            $this->_assets = $this->_templateDir . '/plulz/webroot/';
+
+            $this->_blogurl         =   get_bloginfo('home');
+
+            $this->_homeUrl         =   get_bloginfo('url');
+
+            $this->_adminAjaxUrl    =   admin_url( 'admin-ajax.php' );
+
+            $this->_adminOptionsUrl =   admin_url('options.php');
+
+            $this->PlulzForm    =  new PlulzForm( $this->_name );
+
+            parent::__construct();
+        }
+
+        public function init()
+        {
+            parent::init();
+
+            if ( empty($this->_nonce) )
+                $this->PlulzNotices->addError($this->_name, __('A nonce must be declared in the ' . $this->_className . ' class', $this->_name ));
 
             if ( is_admin() )
                 $this->startAdmin();
             else
                 $this->startFrontEnd();
+            
+            $this->setAjaxEvents();
 
-            $this->startAjax();
-
-            // Lets check for the post events only after all wp is loaded, this will avoid A LOT of troubles
-            $this->setAction('wp_loaded', 'post');
-
-            parent::__construct();
-
+            // Handle Ajax events
+            $this->setAction( 'wp_loaded', 'ajax');
         }
 
-        /**
-         * Starts the admin hooks, by default append the notice system to the usser
-         * @return void
-         */
-        public function startAdmin()
-        {
-            // Admin notices
-            $this->setAction( 'admin_notices', 'adminMessage' );
-        }
+        public function startAdmin(){}
 
-        public function startFrontEnd()
-        {
-            // Front end notices
-            $this->setAction( 'front_notices', 'frontMessage' );
-        }
+        public function startFrontEnd(){}
+
+        public function adminAssets(){}
+
+        public function handleAjax( $action ) {}
+
+        public function handlePost( $data ) {}
+
 
         /**
          * Start the ajax wordpress handling system, capturing all ajax events coming from
-         * both admin or front end areas
-         * 
-         * @return
+         * both admin or front end areas and registering the event accordingly with an wordpress
+         * action
+         *
+         * @return void
          */
-        public function startAjax()
+        public function setAjaxEvents()
         {
             if ( empty($this->_ajaxEvents) )
                 return;
@@ -88,20 +129,21 @@ if (!class_exists('PlulzControllerAbstract'))
 
         /**
          * Handle all incoming post requests from the site and redirect the event to the correct
-         * handling object , handleAjax or handlePost
+         * handling object, they could be a handleAjax or handlePost method
+         *
          * @return void
          */
-        public function post()
+        public function ajax()
         {
             // Theres no post, just leave
             if ( empty($_POST) )
                 return;
-            
+
             $data = PlulzTools::getValue($this->_name);
 
             // Try to get an action from anywhere
             $action = isset($data['action']) && !empty($data['action']) ? $data['action'] : PlulzTools::getValue('action');
-            
+
             // No action means no post or missing info from the $_POST
             if ( !isset($action) || empty($action) )
                 return;
@@ -118,26 +160,86 @@ if (!class_exists('PlulzControllerAbstract'))
                     }
                 }
             }
+        }
 
-            $this->handlePost( $data );
+
+        /**
+         * Include any template file
+         * @param $folder
+         * @param $name
+         * @return bool
+         */
+        public function includeTemplate($name, $folder = '')
+        {
+            $name = ucfirst($name);
+
+            if (empty($folder))
+                $file = "$this->_serverDir/plulz/app/View/$name.php";
+            else
+                $file = "$this->_serverDir/plulz/app/View/$folder/$name.php";
+
+            if(file_exists($file))
+                include($file);
+            else
+            {
+                $file = "$this->_serverDir/plulz/lib/View/$folder/$name.php";
+
+                if(file_exists($file))
+                    include($file);
+            }
+
+            return false;
         }
 
         /**
-         * Hooked on admin message system, show notices and errors
-         * @return void
+         * Shorthand for the theme shared folder
+         * @param $name
+         * @return bool
          */
-        public function adminMessage()
+        public function includeThemeShared($name)
         {
-            $this->_PlulzNotices->showAdminNotices();
+            $this->includeTemplate( $name, 'Shared/Theme');
         }
 
         /**
-         * Called on template
+         * Shorthand for the admin shared folder
+         * @param $name
+         */
+        public function includeAdminShared($name)
+        {
+            $this->includeTemplate( $name, 'Shared/Admin');
+        }
+
+        /**
+         * action helper
+         * @param $event
+         * @param $method
+         * @param int $priority
+         * @param int $accepeted_args
          * @return void
          */
-        public function frontMessage()
+        public function setAction( $event, $method, $priority = 10, $accepeted_args = 1 )
         {
-            echo $this->_PlulzNotices->showFrontNotices();
+            if ( is_array( $method ) )
+                add_action( $event, array( &$this->$method[0], $method[1]), $priority, $accepeted_args );
+            else
+                add_action( $event, array( &$this, $method), $priority, $accepeted_args );
+        }
+
+        /**
+         * filter helper
+         * @param $event
+         * @param $method
+         * @param int $priority
+         * @param int $accepeted_args
+         * @return void
+         */
+        public function setFilter( $event, $method, $priority = 10, $accepeted_args = 1 )
+        {
+            if ( is_array( $method ) )
+                add_filter( $event, array( &$this->$method[0], $method[1]), $priority, $accepeted_args );
+            else
+                add_filter( $event, array( &$this, $method), $priority, $accepeted_args );
         }
 
         /**

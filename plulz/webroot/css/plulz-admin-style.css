@@ -5,6 +5,14 @@
 #plulzwrapper h2{
     margin-left: 45px;
 }
+.postbox .inside, .stuffbox .inside{
+    padding: 10px 15px;
+    line-height: 2em;
+}
+
+.checkbox{
+    background-color: transparent !important;
+}
 
 #plulzwrapper div.inside ul{
     margin-left: 20px;
@@ -25,7 +33,7 @@
         color: #7B0099;
     }
 
-#plulzwrapper form#paypalform{
+#plulzwrapper p#paypal{
     text-align: center;
     padding: 15px;
 }
@@ -46,13 +54,13 @@
     width: 36px;
     height: 36px;
     top: 7px;
-    background: transparent url(logo-plulz.png) no-repeat top left;
+    background: transparent url("../img/logo-plulz.png") no-repeat top left;
     text-indent: -9999px;
 }
 
 #plulzwrapper p.help{
     margin: 0;
-    padding: 15px 20px 0 20px
+    padding: 10px 10px 0
 }
 
 #plulzwrapper input.text, #plulzwrapper textarea{
@@ -68,7 +76,8 @@
 }
 
 #plulzwrapper small{
-    line-height: 12px;
+    line-height: 15px;
+    font-size: 10px;
 }
 
 .upload-button{

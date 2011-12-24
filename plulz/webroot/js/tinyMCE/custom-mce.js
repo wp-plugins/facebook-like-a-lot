@@ -11,7 +11,7 @@
             ed.addButton('like', {
                 title : 'Facebook Like Button',
                 onclick : function() {
-                    ed.execCommand( 'mceInsertContent', false, '[plulz_social_like width="300" send="false" text="like" layout="standard" faces="false" ]');
+                    ed.execCommand( 'mceInsertContent', false, '[plulz_social_like width="350" send="false" font="arial" action="like" layout="standard" faces="false" ]');
                 },
                 image: url + "/like.png"
             });
