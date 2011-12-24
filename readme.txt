@@ -1,4 +1,4 @@
-=== SEO Facebook Comment ===
+=== Facebook Like a Lot ===
 
 Contributors: bemcapaz
 
