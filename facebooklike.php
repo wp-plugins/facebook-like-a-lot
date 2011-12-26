@@ -86,6 +86,8 @@ if ( !class_exists("FacebookLikeaLot") )
 
             $this->_pluginPage  =   admin_url('admin.php') . '?page=' . $this->_facebook->getName();
 
+            $this->setShortCode('plulz_social_like', array( '_facebook', 'socialLike') );
+
             // Show like button in the content area
             if ($this->_options['content'])
                 $this->setFilter( 'the_content', array( '_facebook', 'contentSocialLike' ) );
@@ -106,12 +108,6 @@ if ( !class_exists("FacebookLikeaLot") )
         public function install()
         {
             $this->_facebook->install();
-        }
-
-        public function shortCode()
-        {
-
-            $this->setShortCode('plulz_social_like', array( '_facebook', 'socialLike') );
         }
 
         /**

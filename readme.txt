@@ -6,11 +6,11 @@ Donate link: --//--
 
 Tags: like, facebook like, plulz facebook like, facebook social plugin, facebook like button, wordpress like, facebook like plugin, like plugin
 
-Requires at least: 3.0
+Requires at least: 2.9
 
 Tested up to: 3.3
 
-Stable tag: 1.0
+Stable tag: 1.1
 
 Add a Facebook Like Button on Every blog post on your blog anywhere you want to, in default areas or through shortcode
 
