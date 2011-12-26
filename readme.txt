@@ -1,4 +1,4 @@
-=== Facebook Like a Lot ===
+=== Plulz Facebook Like ===
 
 Contributors: bemcapaz
 

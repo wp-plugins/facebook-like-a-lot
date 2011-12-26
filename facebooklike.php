@@ -1,6 +1,6 @@
 <?php
 /*
- * Plugin Name: Facebook Like a Lot
+ * Plugin Name: Plulz Facebook Like
  * Plugin URI: http://www.plulz.com
  * Description: This plugin will allow you to insert a like button anywhere in the theme you want or auto embed in each post
  * Version: 1.0
