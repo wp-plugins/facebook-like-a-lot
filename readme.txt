@@ -1,4 +1,4 @@
-=== Plulz Facebook Like ===
+=== Facebook Likes ===
 
 Contributors: bemcapaz
 
