@@ -1,10 +1,10 @@
-=== Facebook Like a Lot ===
+=== Plulz Facebook Like ===
 
 Contributors: bemcapaz
 
 Donate link: --//--
 
-Tags: like, facebook like, like a lot, facebook social plugin, facebook like button, wordpress like, facebook like plugin, like plugin
+Tags: like, facebook like, plulz facebook like, facebook social plugin, facebook like button, wordpress like, facebook like plugin, like plugin
 
 Requires at least: 3.0
 

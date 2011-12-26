@@ -1407,20 +1407,25 @@ if ( !class_exists("PlulzFacebookAbstract") )
 
             if( is_single() || is_singular())
             {
-                if (has_post_thumbnail($post->ID))
+                // For compatibility with Wordpress versions before 2.9
+                if (function_exists('has_post_thumbnail'))
                 {
-                    $imageID = get_post_thumbnail_id( $post->ID );
-                    $image = wp_get_attachment_image_src($imageID);
-                    $link = $image[0];
+                    if (has_post_thumbnail($post->ID))
+                    {
+                        $imageID = get_post_thumbnail_id( $post->ID );
+                        $image = wp_get_attachment_image_src($imageID);
+                        $link = $image[0];
 
-                    $output     .=  "<meta property='og:image' content='{$link}' />";
+                        $output     .=  "<meta property='og:image' content='{$link}' />";
+                    }
+
+                    $postTitle = single_post_title('', false);
+
+                    $postUrl    =   get_permalink($post->ID);
+                    $output     .=  "<meta property='og:url' content='{$postUrl}' />";
+                    $output     .=  "<meta property='og:type' content='article' />";
+
                 }
-
-                $postTitle = single_post_title('', false);
-
-                $postUrl    =   get_permalink($post->ID);
-                $output     .=  "<meta property='og:url' content='{$postUrl}' />";
-                $output     .=  "<meta property='og:type' content='article' />";
             }
             else
             {
