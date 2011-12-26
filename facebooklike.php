@@ -3,7 +3,7 @@
  * Plugin Name: Plulz Facebook Like
  * Plugin URI: http://www.plulz.com
  * Description: This plugin will allow you to insert a like button anywhere in the theme you want or auto embed in each post
- * Version: 1.0
+ * Version: 1.1
  * Author: Fabio Zaffani
  * Author URI: http://www.plulz.com
  * License: GPL2
