@@ -31,7 +31,7 @@ It also have an advanced configuration feature that allows you to specify advanc
 
 1. Upload `facebook-like-a-lot` folder to the `/wp-content/plugins/` directory
 2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Configure the Options of the plugin (App Id, App Secret and Admin E-mail are mandatory)
+3. Configure the Options of the plugin (App Id and App Secret are mandatory)
 4. Profit :)
 
 
@@ -41,7 +41,26 @@ It also have an advanced configuration feature that allows you to specify advanc
 Everything regarding this question can be found here
 [How to Create a Facebook App](http://www.plulz.com/how-to-create-a-facebook-app "How to Create a Facebook App")
 
+= How do I find my Facebook User ID =
+Everything regarding this question can be found here
+[How to Create a Facebook App](http://www.plulz.com/how-to-get-my-facebook-user-id "How to get my Facebook User ID")
+
+= How do I find my Language Code to Configure the APP =
+
+Here is a list with many available languages in Facebook
+[Facebook Language Codes](http://www.plulz.com/facebook-language-codes)
+
+= What the message " Warning: http://somelink is unreachable. " Means?
+It mean's that Facebook can't find the page you're trying to use the SEO Facebook Comment. The reasons that could possibly lead to this are:
+* You haven't correctly configured the APP ID or APP SECRET
+* Facebook can't find the Host/Link of your page (using a LOCAL SERVER for example)
+* You didn't correctly configured all the necessary options in the http://facebook.com/developers page
+
 == Changelog ==
+
+= 1.1 =
+
+* <strong> FIXED </strong> A issue that was preventing the shortcode from working.
 
 = 1.0 =
 
@@ -49,6 +68,10 @@ Everything regarding this question can be found here
 
 
 == Upgrade Notice ==
+
+= 1.1 =
+
+* Shortcode is back working. Upgrade Highly Advisable.
 
 = 1.0 =
 
