@@ -128,8 +128,7 @@ if(!class_exists('PlulzSession'))
 				return !$this->_sessionState;
 			}
 
-			return FALSE;
+			return false;
 		}
 	}
 }
-?>

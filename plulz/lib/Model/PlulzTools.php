@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  * This class have severall helpfull functions to help in the most diverses situations
  * (creating filename, sending email, sanitize everything, creating numbers and rounding, etc)
@@ -38,21 +38,40 @@ if (!class_exists('PlulzTools'))
 			return ceil($value * $mult) / $mult;
 		}
 
-		/**
+        /**
          * Dictionary of chars and their respective valid substitutes
          * @static
-         * @param $string
+         * @param $str
+         * @param array $replace
+         * @param string $delimiter
+         * @internal param $string
          * @return string
          */
-		public static function NormalizeStringToFileName($string)
-		{
-            $string = self::NormalizeString($string);
+        public static function NormalizeString($str, $replace=array(), $delimiter='-')
+        {
+            setlocale(LC_ALL, 'en_US.UTF8');
 
-			$table = array( ' ' => '-' );
+            if( !empty($replace) ) {
+                $str = str_replace((array)$replace, ' ', $str);
+            }
 
-            return strtr($string, $table);
-		}
+            $clean = iconv('UTF-8', 'ASCII//TRANSLIT', $str);
+            $clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $clean);
+            $clean = strtolower(trim($clean, '-'));
+            $clean = preg_replace("/[\/_|+ -]+/", $delimiter, $clean);
 
+            return $clean;
+        }
+
+        /**
+         * Forgot
+         * @static
+         * @param $character
+         * @param $string
+         * @param $side
+         * @param bool $keep_character
+         * @return bool|string
+         */
 		public static function CutStringUsintLast($character, $string, $side, $keep_character=true)
 		{
 			$offset = ($keep_character ? 1 : 0);

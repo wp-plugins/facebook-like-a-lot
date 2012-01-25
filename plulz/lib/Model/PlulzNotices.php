@@ -42,7 +42,7 @@ if (!class_exists('PlulzNotices'))
         public function getNotices()
         {
             if (empty($this->_Updates))
-                $this->_Updates = $this->_PlulzSession->isDefined('updates') ? $this->_PlulzSession->get('updates') : array();
+                $this->_Updates = $this->_PlulzSession->isDefined('updates')? $this->_PlulzSession->get('updates') : array();
 
             if (empty($this->_Errors))
                 $this->_Errors  = $this->_PlulzSession->isDefined('errors') ? $this->_PlulzSession->get('errors') : array();
@@ -82,6 +82,8 @@ if (!class_exists('PlulzNotices'))
 
         public function hasErrors()
         {
+            $this->getNotices();
+
             if (!isset($this->_Errors) || empty($this->_Errors))
                 return false;
             else
@@ -90,6 +92,8 @@ if (!class_exists('PlulzNotices'))
 
         public function hasUpdates()
         {
+            $this->getNotices();
+
             if (!isset($this->_Updates) || empty($this->_Updates))
                 return false;
             else

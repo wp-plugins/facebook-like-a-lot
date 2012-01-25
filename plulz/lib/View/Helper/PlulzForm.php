@@ -61,9 +61,9 @@ if (!class_exists('PlulzForm'))
 
            // Check Class
            if (isset($class))
-               $class      =   is_array($class)    ?   'text ' . implode(" ", $class)    :   'text ' . $class;
+               $class      =   is_array($class)    ?   $type . ' ' . implode(" ", $class)    :   $type . ' ' . $class;
            else
-               $class      =   'text';
+               $class      =   $type;
 
            // Check for id
            if ( !isset($id))
@@ -183,7 +183,7 @@ if (!class_exists('PlulzForm'))
            $value      =   isset($input['value'])     ?    (string)$input['value']     :   '';
            $label      =   isset($input['label'])     ?    (string)$input['label']     :   '';
            $settings   =   array(
-               'class'     =>  isset($input['class'])     ?    $type . ' ' . (string)$input['class']   :   $type,
+               'class'     =>  isset($input['class'])     ?    (string)$input['class']     :   '',
                'maxlength' =>  isset($input['maxlength']) ?    (int)$input['maxlength']    :   null,
                'readonly'  =>  isset($input['readonly'])  ?    (bool)$input['readonly']    :   null,
                'options'   =>  isset($input['options'])   ?    (array)$input['options']    :   '',

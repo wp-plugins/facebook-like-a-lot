@@ -10,7 +10,7 @@ Requires at least: 2.9
 
 Tested up to: 3.3
 
-Stable tag: 1.1
+Stable tag: 1.2
 
 Add a Facebook Like Button on Every blog post on your blog anywhere you want to, in default areas or through shortcode
 
@@ -58,6 +58,11 @@ It mean's that Facebook can't find the page you're trying to use the SEO Faceboo
 
 == Changelog ==
 
+= 1.2 =
+
+* <strong> FIXED </strong> Fixed some issues with windows PHP servers
+* <strong> FIXED </strong> The append "before and after" no longer cause problems in the RSS Feed
+
 = 1.1 =
 
 * <strong> FIXED </strong> A issue that was preventing the shortcode from working.
@@ -68,6 +73,10 @@ It mean's that Facebook can't find the page you're trying to use the SEO Faceboo
 
 
 == Upgrade Notice ==
+
+= 1.2 =
+
+* The plugin no longer breaks the first RSS item. Upgrade Hihgly Advisable.
 
 = 1.1 =
 

@@ -179,10 +179,15 @@ if (!class_exists('PlulzControllerAbstract'))
                 $file = "$this->_serverDir/plulz/app/View/$folder/$name.php";
 
             if(file_exists($file))
+            {
                 include($file);
+            }
             else
             {
-                $file = "$this->_serverDir/plulz/lib/View/$folder/$name.php";
+                if(empty($folder))
+                    $file = "$this->_serverDir/plulz/lib/View/$name.php";
+                else
+                    $file = "$this->_serverDir/plulz/lib/View/$folder/$name.php";
 
                 if(file_exists($file))
                     include($file);

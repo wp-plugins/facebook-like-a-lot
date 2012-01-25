@@ -24,7 +24,7 @@ if ( !class_exists("PlulzAdmin") )
         public static $CURLOPT = array(
             CURLOPT_CONNECTTIMEOUT => 10,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_TIMEOUT        => 60,
+            CURLOPT_TIMEOUT        => 10,
             CURLOPT_USERAGENT      => 'plulz-php-1.0'
         );
 

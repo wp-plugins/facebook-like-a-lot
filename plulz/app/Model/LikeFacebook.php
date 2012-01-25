@@ -78,14 +78,21 @@ if (!class_exists('LikeFacebook'))
 
             if ($placement == 'before')
             {
-                $newContent = $this->socialLike();
-                $newContent .= $content;
+                if ( !is_feed() )
+                {
+                    $newContent = $this->socialLike();
+                    $newContent .= $content;
 
-                return $newContent;
+                    return $newContent;
+                }
             }
             else if ($placement == 'before and after')
             {
-                $newContent = $this->socialLike();
+                $newContent = '';
+
+                if ( !is_feed() )
+                    $newContent .= $this->socialLike();
+
                 $newContent .= $content;
                 $newContent .= $this->socialLike();
 
