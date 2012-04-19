@@ -10,7 +10,7 @@ Requires at least: 2.9
 
 Tested up to: 3.3
 
-Stable tag: 1.2
+Stable tag: 1.2.1
 
 Add a Facebook Like Button on Every blog post on your blog anywhere you want to, in default areas or through shortcode
 
@@ -57,6 +57,10 @@ It mean's that Facebook can't find the page you're trying to use the SEO Faceboo
 * You didn't correctly configured all the necessary options in the http://facebook.com/developers page
 
 == Changelog ==
+
+= 1.2.1 =
+
+* <strong> FIXED </strong> API call through cURl
 
 = 1.2 =
 

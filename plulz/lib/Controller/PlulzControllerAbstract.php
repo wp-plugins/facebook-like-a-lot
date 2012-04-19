@@ -2,7 +2,7 @@
 /*
  * This class is responsible for handling all application instances
  * sending the correct requests to the correct place / models
- *
+ *s
  * CLASS OVERVIEW
  *
  *

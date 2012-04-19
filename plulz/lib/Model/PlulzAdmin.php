@@ -34,7 +34,7 @@ if ( !class_exists("PlulzAdmin") )
          */
         public static $DOMAIN = array(
             'www'   =>  'http://www.plulz.com',
-            'feed'  =>  'http://www.plulz.com/feed/rss',
+            'feed'  =>  'http://www.plulz.com/feed',
             'api'   =>  'http://api.plulz.com'
         );
 
