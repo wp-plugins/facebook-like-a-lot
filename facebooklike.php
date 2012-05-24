@@ -99,22 +99,22 @@ if ( !class_exists("FacebookLikeaLot") )
             parent::init();
         }
 
-       /**
-        *
-        * This method insert the default config of the plugin and also creates a database
-        * to control what comments were already added and those that were not
-        * @return void
-        */
+        /**
+         *
+         * This method insert the default config of the plugin and also creates a database
+         * to control what comments were already added and those that were not
+         * @return void
+         */
         public function install()
         {
             $this->_facebook->install();
         }
 
         /**
-        *
-        * Method called when the plugin is uninstalled
-        * @return void
-        */
+         *
+         * Method called when the plugin is uninstalled
+         * @return void
+         */
         public function remove(){}
 
         public function preLoad(){}
