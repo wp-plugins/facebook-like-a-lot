@@ -47,7 +47,7 @@ if (!class_exists('LikeFacebook'))
                         'faces'         =>  'false',
                         'colorScheme'   =>  'light'
                     ),
-                    'share'                 =>  'share'
+                    'share'                 =>  null
             );
 
             // Check to see if there is previously saved options
